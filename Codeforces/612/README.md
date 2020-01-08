@@ -9,7 +9,7 @@
 
  * [x] Div2_A PyPy3
  * [x] Div2_B GNU C++11
- * [ ] Div1_A
+ * [x] Div1_A GNU C++11
  * [ ] Div1_B
  * [ ] Div1_C1
  * [ ] Div1_C2
