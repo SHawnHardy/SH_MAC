@@ -8,6 +8,6 @@
  @copyright MIT License
 """
 
-from sys import setrecursionlimit
+import sys
 
-setrecursionlimit(1000000)
+sys.setrecursionlimit(1000000)
