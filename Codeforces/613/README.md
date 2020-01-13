@@ -9,6 +9,6 @@
  * [x] A Python3
  * [x] B Python3
  * [x] C Python3
- * [ ] D
+ * [x] D GNU C++11
  * [ ] E
  * [ ] F

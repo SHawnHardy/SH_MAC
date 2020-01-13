@@ -1,10 +1,9 @@
 /*
- * @file Templates/DataStructure/Trie.cpp
- * @version 0.2
+ * @file Codeforces/613/d.cpp
  * @author SHawnHardy
  * @date 2020-01-13
  * @copyright MIT License
- * @last_used Codeforces/613/d.cpp
+ * @templates Trie-0.2
  */
 
 #include "algorithm"
@@ -36,16 +35,14 @@ const int MOD = 1E9 + 7;
 const int INF = 0x3f3f3f3f;
 
 struct Trie {
-    // DIY
-    const static int TRIE_SIZE = 26;
+    const static int TRIE_SIZE = 2;
 
     struct Trie_Node {
         int cnt;
         Trie_Node *next[TRIE_SIZE];
     };
 
-    // DIY
-    int trie_convert(char c) { return c - 'a'; }
+    int trie_convert(char c) { return c - '0'; }
 
     Trie_Node *head;
 
@@ -74,3 +71,44 @@ struct Trie {
         }
     }
 };
+
+int solve(Trie::Trie_Node *p, int len) {
+    int ans = 0;
+
+    while (len && ((p->next[0] == NULL && p->next[1] != NULL) ||
+                   (p->next[0] != NULL && p->next[1] == NULL))) {
+        ans <<= 1;
+        len--;
+        p = (p->next[0] == NULL ? p->next[1] : p->next[0]);
+    }
+    if (len) {
+        ans <<= 1;
+        ans += 1;
+        ans <<= (--len);
+        ans += min(solve(p->next[0], len), solve(p->next[1], len));
+    }
+    return ans;
+}
+
+int main() {
+    std::ios::sync_with_stdio(false);
+    std::cin.tie(0);
+    Trie t;
+
+    int n;
+    cin >> n;
+    char str[30 + 10];
+    str[30] = '\0';
+    for (int i = 0; i < n; i++) {
+        int a;
+        cin >> a;
+        for (int j = 0; j < 30; j++) {
+            str[j] = ((a & (1 << (29 - j))) > 0) ? '1' : '0';
+        }
+        t.add(str);
+    }
+
+    cout << solve(t.head, 30) << endl;
+
+    return 0;
+}
