@@ -6,9 +6,9 @@
 
 ## Problems
 
- * [x] A Python3
- * [x] B Python3
- * [x] C Python3
- * [x] D GNU C++11
- * [ ] E
- * [ ] F
+* [x] A Python3
+* [x] B Python3
+* [x] C Python3
+* [x] D GNU C++11
+* [ ] E
+* [ ] F
