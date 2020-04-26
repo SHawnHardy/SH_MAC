@@ -5,7 +5,7 @@
  @author SHawnHardy
  @date 2020-01-12
  @copyright MIT License
- @templates SieveOfEuler-0.1
+ @templates NumberTheory/SieveOfEuler-0.1
 """
 
 from math import sqrt

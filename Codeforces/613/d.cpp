@@ -3,7 +3,7 @@
  * @author SHawnHardy
  * @date 2020-01-13
  * @copyright MIT License
- * @templates Trie-0.2
+ * @templates DataStructure/Trie-0.2
  */
 
 #include "algorithm"
