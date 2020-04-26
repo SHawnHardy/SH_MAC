@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
- @file Templates/NumberTheory/SieveOfEuler.py
- @version 0.3
+ @file ProjectEuler/0010.py
  @author SHawnHardy
- @date 2020-04-26
+ @date 2020-04-25
  @copyright MIT License
- @last_used ProjectEuler/0007.py
+ @templates NumberTheory/SieveOfEuler.py-0.2
 """
 
 import sys
@@ -15,11 +14,8 @@ sys.setrecursionlimit(1000000)
 
 
 def sieve_of_euler(limit):
-    prime = []
     is_prime = [True for _ in range(limit)]
-    is_prime[0] = is_prime[1] = False
-    prime_factor = [_ for _ in range(limit)]
-
+    prime = []
     for x in range(2, limit):
         if is_prime[x]:
             prime.append(x)
@@ -28,7 +24,10 @@ def sieve_of_euler(limit):
             if p * x >= limit:
                 break
             is_prime[p * x] = False
-            prime_factor[p * x] = p
             if x % p == 0:
                 break
-    return prime, is_prime, prime_factor
+    return is_prime, prime
+
+
+print(sum(sieve_of_euler(2000000)[1]))
+# 142913828922

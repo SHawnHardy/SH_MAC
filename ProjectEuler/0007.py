@@ -1,12 +1,11 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 """
- @file Templates/NumberTheory/SieveOfEuler.py
- @version 0.3
+ @file ProjectEuler/0007.py
  @author SHawnHardy
  @date 2020-04-26
  @copyright MIT License
- @last_used ProjectEuler/0007.py
+ @templates NumberTheory/SieveOfEuler.py-0.3
 """
 
 import sys
@@ -32,3 +31,7 @@ def sieve_of_euler(limit):
             if x % p == 0:
                 break
     return prime, is_prime, prime_factor
+
+
+print(sieve_of_euler(1000000)[0][10000])
+# 104743
