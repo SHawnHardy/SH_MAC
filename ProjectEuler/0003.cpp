@@ -4,7 +4,7 @@
  * @date 2020-04-26
  * @copyright MIT License
  * @templates NumberTheory/SieveOfEuler.cpp-0.1,
- * NumberTheory/PrimeActorization.cpp-0.1
+ * NumberTheory/PrimeActorization.cpp-0.2
  */
 
 #include "algorithm"
@@ -70,15 +70,15 @@ struct SieveOfEuler {
 };
 
 void prime_actorization(ll x, vector<int> prime, int prime_factor[], int limit,
-                        vector<pair<ll, int>> &ans) {
+                        vector<pair<ll, int>> &rst) {
     // x > 1
-    ans.clear();
+    rst.clear();
 
     for (auto i = prime.begin(); x >= limit && i != prime.end(); i++) {
         if (x % ll(*i) == 0LL) {
-            ans.push_back(make_pair(ll(*i), 0));
+            rst.push_back(make_pair(ll(*i), 0));
             while (x % ll(*i) == 0LL) {
-                ans.back().se++;
+                rst.back().se++;
                 x /= ll(*i);
             }
         }
@@ -86,24 +86,16 @@ void prime_actorization(ll x, vector<int> prime, int prime_factor[], int limit,
     if (x == 1)
         return;
     if (x >= limit) {
-        ans.push_back(make_pair(x, 1));
+        rst.push_back(make_pair(x, 1));
         return;
     }
 
-    stack<int> tmp_ans;
     while (x != 1) {
-        tmp_ans.push(prime_factor[x]);
-        x /= prime_factor[x];
-    }
-    ans.push_back(make_pair(tmp_ans.top(), 1));
-    tmp_ans.pop();
-    while (!tmp_ans.empty()) {
-        if (ans.back().fi != tmp_ans.top()) {
-            ans.push_back(make_pair(ll(tmp_ans.top()), 1));
-        } else {
-            ans.back().se++;
+        rst.push_back(make_pair(ll(prime_factor[x]), 0));
+        while (x % rst.back().fi == 0) {
+            x /= prime_factor[x];
+            rst.back().se++;
         }
-        tmp_ans.pop();
     }
 }
 

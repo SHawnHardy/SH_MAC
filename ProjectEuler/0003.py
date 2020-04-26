@@ -3,9 +3,10 @@
 """
  @file ProjectEuler/0003.py
  @author SHawnHardy
- @date 2020-04-25
+ @date 2020-04-26
  @copyright MIT License
- @templates NumberTheory/SieveOfEuler.py-0.3
+ @templates NumberTheory/SieveOfEuler.py-0.4,
+ NumberTheory/PrimeActorization.py-0.2
 """
 
 import sys
@@ -52,19 +53,11 @@ def prime_actorization(x, prime, prime_factor):
         rst.append([x, 1])
         return rst
 
-    tmp_rst = []
     while x != 1:
-        tmp_rst.append(prime_factor[x])
-        x //= prime_factor[x]
-    while tmp_rst:
-        tmp = tmp_rst.pop()
-        try:
-            if rst[-1][0] == tmp:
-                rst[-1][1] += 1
-            else:
-                rst.append([tmp, 1])
-        except IndexError:
-            rst.append([tmp, 1])
+        rst.append([prime_factor[x], 0])
+        while x % rst[-1][0] == 0:
+            x //= prime_factor[x]
+            rst[-1][1] += 1
     return rst
 
 
