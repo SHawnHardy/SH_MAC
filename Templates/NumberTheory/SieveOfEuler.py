@@ -6,7 +6,7 @@
  @author SHawnHardy
  @date 2020-04-26
  @copyright MIT License
- @last_used ProjectEuler/0007.py
+ @last_used ProjectEuler/0012.py
 """
 
 import sys
